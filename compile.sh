@@ -10,11 +10,9 @@ for dir in */ ; do
         # Run the Python setup command
         sudo python3 setup.py bdist_wheel
         # Copy the .whl file(s) to the dist directory in home
-        cp dist/*.whl ~/dist/
+        sudo cp dist/*.whl ~/dist/
         cd ..
     fi
 done
-
-sleep 100
-
+ 
 echo "Done."

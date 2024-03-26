@@ -25,8 +25,11 @@ RUN set -ex; echo "Building for ${TARGETOS}/${TARGETARCH}" \
     && ~/miniforge3/bin/mamba init bash \
     && ~/miniforge3/bin/mamba init zsh
 RUN sudo apt-get -y install python3-pip
+RUN sudo pip3 install requests
 
 COPY ./pypi_small /home/ubuntu/pypi_small
-COPY compile.sh /home/ubuntu
-CMD [ "./compile.sh" ] 
+RUN sudo mkdir -p /home/ubuntu/dist
 
+COPY compile.sh /home/ubuntu
+
+CMD [ "./compile.sh" ] 
